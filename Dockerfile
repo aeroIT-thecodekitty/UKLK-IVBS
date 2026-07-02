@@ -33,7 +33,9 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 RUN npm install
 RUN NODE_OPTIONS="--max-old-space-size=450" npm run build
 
-# Set storage and cache permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Crucial Fix: Set recursive permissions so Apache can write to storage logs/sessions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html/storage \
+    && chmod -R 775 /var/www/html/bootstrap/cache
 
 EXPOSE 80
