@@ -1,41 +1,40 @@
 FROM php:8.4-apache
 
-# Install system dependencies & PHP extensions
+# System dependencies
 RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    git \
-    curl \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    git curl unzip zip \
+    libpng-dev libonig-dev libxml2-dev \
+    libpq-dev \
+    nodejs npm \
+    && docker-php-ext-install \
+    pdo_mysql mbstring exif pcntl bcmath gd pdo_pgsql pgsql
 
-# Install a stable, modern Node.js version
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs
-
-# Enable Apache mod_rewrite for Laravel routing
+# Enable Apache rewrite
 RUN a2enmod rewrite
 
-# Set the Apache document root to Laravel's public directory
+# Set Laravel public folder
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
+ && sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
-# Copy project files and install Composer
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 WORKDIR /var/www/html
 COPY . .
 
-# Install PHP and Frontend dependencies safely
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader
 RUN npm install
-RUN NODE_OPTIONS="--max-old-space-size=450" npm run build
+RUN npm run build
 
-# Crucial Fix: Set recursive permissions so Apache can write to storage logs/sessions
+# Laravel optimization (IMPORTANT)
+RUN php artisan config:clear \
+ && php artisan cache:clear \
+ && php artisan view:clear
+
+# Permissions
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html/storage \
-    && chmod -R 775 /var/www/html/bootstrap/cache
+ && chmod -R 775 storage bootstrap/cache
 
 EXPOSE 80
