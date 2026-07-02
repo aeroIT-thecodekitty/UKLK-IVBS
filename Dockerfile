@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Install Node.js for frontend compilation
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+# Install a stable, modern Node.js version
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
 # Enable Apache mod_rewrite for Laravel routing
@@ -28,9 +28,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . .
 
-# Install PHP and Frontend dependencies
+# Install PHP and Frontend dependencies (with memory limits increased)
 RUN composer install --no-dev --optimize-autoloader --no-scripts
-RUN npm install && npm run build
+RUN npm install
+
+# Increase Node's memory limit so Render's free tier doesn't choke
+RUN NODE_OPTIONS="--max-old-space-size=450" npm run build
 
 # Set storage and cache permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
