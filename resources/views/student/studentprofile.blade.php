@@ -1,7 +1,6 @@
 <x-app-layout>
     <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900">
-        
-        @include('layouts.student-sidebar')
+        @include('layouts.user-sidebar')
 
         <main class="flex-1 p-8 space-y-6">
             
