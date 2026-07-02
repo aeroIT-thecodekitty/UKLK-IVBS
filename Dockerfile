@@ -28,12 +28,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . .
 
-# Install PHP and Frontend dependencies (with memory limits increased)
+# Install PHP and Frontend dependencies safely
 RUN composer install --no-dev --optimize-autoloader --no-scripts
-RUN php artisan optimize:clear
-RUN npm install && npm run build
-
-# Increase Node's memory limit so Render's free tier doesn't choke
+RUN npm install
 RUN NODE_OPTIONS="--max-old-space-size=450" npm run build
 
 # Set storage and cache permissions
