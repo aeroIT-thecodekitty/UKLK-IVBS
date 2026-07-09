@@ -16,7 +16,7 @@
                     <h2 class="font-bold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
                         {{ __('Parking Inventory Registry') }}
                     </h2>
-                    <p class="text-xs text-gray-500 mt-1">Live data controls syncing instantly with your Flutter mobile grid selection array.</p>
+                    <p class="text-xs text-gray-500 mt-1">This shows all bookings of stall parking slots and their current status.</p>
                 </div>
                 <a href="{{ route('admin_user.stall_parking_create') }}" class="bg-purple-900 hover:bg-purple-800 text-white font-medium text-sm px-4 py-2 rounded-xl transition cursor-pointer shadow-sm no-underline inline-block">
                     + Register New Slot
@@ -29,11 +29,11 @@
                     <div class="text-3xl font-black text-purple-900 dark:text-purple-400 mt-1">{{ $stalls->count() }}</div>
                 </div>
                 <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Roofed Overhead Units</div>
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Roofed Stalls</div>
                     <div class="text-3xl font-black text-blue-600 mt-1">{{ $stalls->where('is_roofed', true)->count() }}</div>
                 </div>
                 <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Maintenance Suspensions</div>
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Maintenance</div>
                     <div class="text-3xl font-black text-red-500 mt-1">{{ $stalls->where('status', 'maintenance')->count() }}</div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                                     </p>
                                 </div>
                                 <span class="px-2.5 py-0.5 text-xs font-bold rounded-md {{ $stall->is_roofed ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800' }}">
-                                    {{ $stall->is_roofed ? 'Roofed Structural Roof' : 'Open Sky' }}
+                                    {{ $stall->is_roofed ? 'Roofed Structural Roof' : 'Unroofed' }}
                                 </span>
                             </div>
 
@@ -92,7 +92,7 @@
                     </div>
                 @empty
                     <div class="col-span-full bg-white text-center p-12 rounded-xl border border-gray-200 text-gray-400 italic text-sm">
-                        No active records populated inside your `stall_parking` dataset yet.
+                        No active records inside your `stall_parking` yet.
                     </div>
                 @endforelse
             </div>

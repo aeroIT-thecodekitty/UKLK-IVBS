@@ -44,7 +44,7 @@
                     if(currentTab === 'web') { actionUrl = '{{ route('admin.users.web.store') }}'; webModal = true; }
                     else { actionUrl = '{{ route('admin.users.app.store') }}'; appModal = true; }
                 " class="w-full sm:w-auto bg-purple-900 hover:bg-purple-800 text-white font-bold text-xs px-4 py-2 rounded-lg transition shadow-sm cursor-pointer text-center">
-                    + Register New User Node
+                    + Register New User
                 </button>
             </div>
 
@@ -55,9 +55,9 @@
                         <tr class="bg-purple-950 text-purple-200 text-xs font-bold uppercase tracking-wider">
                             <th class="p-4">User Details</th>
                             <th class="p-4">Email Address</th>
-                            <th class="p-4">Phone No</th>
-                            <th class="p-4">Account Access Role</th>
-                            <th class="p-4 text-right">Actions Management</th>
+                            <th class="p-4">Phone Number</th>
+                            <th class="p-4">Role</th>
+                            <th class="p-4 text-right">Actions</th>
                         </tr>
                         @forelse($webUsers as $user)
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 text-gray-700 dark:text-gray-300 transition text-sm">
@@ -81,7 +81,7 @@
                                         webModal = true;
                                     " class="bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 text-xs px-2.5 py-1 rounded transition font-bold cursor-pointer">Edit</button>
                                     
-                                    <form action="{{ route('admin.users.web.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Drop this web user profile entirely?');">
+                                    <form action="{{ route('admin.users.web.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to remove this web user profile?');">
                                         @csrf @method('DELETE')
                                         <button type="submit" class="text-red-600 border border-red-100 hover:bg-red-50 dark:border-red-900 dark:text-red-400 dark:hover:bg-red-950/30 text-xs px-2.5 py-1 rounded transition font-medium cursor-pointer">Delete</button>
                                     </form>
@@ -94,15 +94,15 @@
 
                     <tbody x-show="currentTab === 'app'" class="divide-y divide-gray-100 dark:divide-gray-700" x-cloak style="display: none;">
                         <tr class="bg-purple-950 text-purple-200 text-xs font-bold uppercase tracking-wider">
-                            <th class="p-4">Supabase App Username</th>
-                            <th class="p-4">Registered Email Address</th>
-                            <th class="p-4">Phone Handset Line</th>
-                            <th class="p-4 text-right">Actions Management</th>
+                            <th class="p-4">Name</th>
+                            <th class="p-4">Email Address</th>
+                            <th class="p-4">Phone Number</th>
+                            <th class="p-4 text-right">Actions</th>
                         </tr>
                         @forelse($appUsers as $user)
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 text-gray-700 dark:text-gray-300 transition text-sm">
                                 <td class="p-4 font-bold text-purple-900 dark:text-purple-400">
-                                    {{ $user->name ?? 'Supabase Mobile Profile' }}
+                                    {{ $user->name ?? 'Mobile app Profile' }}
                                     <div class="text-[10px] text-gray-400 font-mono font-normal" title="{{ $user->id }}">
                                         UUID: {{ substr($user->id, 0, 8) }}...
                                     </div>
@@ -117,7 +117,7 @@
                                         appModal = true;
                                     " class="bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 text-xs px-2.5 py-1 rounded transition font-bold cursor-pointer">Edit</button>
                                     
-                                    <form action="{{ route('admin.users.app.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Drop this user account directly out of Supabase Auth core layers?');">
+                                    <form action="{{ route('admin.users.app.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to remove this account?');">
                                         @csrf @method('DELETE')
                                         <button type="submit" class="text-red-600 border border-red-100 hover:bg-red-50 dark:border-red-900 dark:text-red-400 dark:hover:bg-red-950/30 text-xs px-2.5 py-1 rounded transition font-medium cursor-pointer">Delete</button>
                                     </form>
@@ -146,11 +146,11 @@
                         <input type="email" name="email" x-model="form.email" required class="w-full bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white rounded-lg p-2 focus:outline-none focus:border-purple-600">
                     </div>
                     <div>
-                        <label class="block font-bold mb-1">Phone Line</label>
+                        <label class="block font-bold mb-1">Phone Number</label>
                         <input type="text" name="phone" x-model="form.phone" class="w-full bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white rounded-lg p-2 focus:outline-none focus:border-purple-600">
                     </div>
                     <div>
-                        <label class="block font-bold mb-1">System Security Access Role</label>
+                        <label class="block font-bold mb-1">Roles</label>
                         <select name="role" x-model="form.role" required class="w-full bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white rounded-lg p-2 focus:outline-none focus:border-purple-600">
                             <option value="admin">Admin Executive</option>
                             <option value="student">Student or UPSI Personnel</option>

@@ -19,7 +19,7 @@
             
             <div class="border-b border-gray-200 pb-4">
                 <h2 class="text-2xl font-black text-[#0B318F] tracking-wide">My Bookings</h2>
-                <p class="text-xs text-gray-500 mt-1">Review your two-stage reservation lifecycles and submit bank transaction receipts.</p>
+                <p class="text-xs text-gray-500 mt-1">Review and submit bank transaction receipts.</p>
             </div>
 
             @if(session('success'))
@@ -37,8 +37,8 @@
                                 <th class="p-4">Category Type</th>
                                 <th class="p-4">Schedule Details</th>
                                 <th class="p-4">Price</th>
-                                <th class="p-4">Workflow Status State</th>
-                                <th class="p-4 text-center">Payment Actions Box</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4 text-center">Results</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 text-sm text-gray-700">
@@ -81,7 +81,7 @@
                                             </span>
                                         @elseif($booking->status === 'pending_payment_verification')
                                             <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-full">
-                                                🔍 Stage 3: Verifying Cash
+                                                🔍 Stage 3: Verifying Payment
                                             </span>
                                         @elseif($booking->status === 'payment_confirmed' || $booking->status === 'confirmed' || $booking->status === 'approved')
                                             <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-green-700 bg-green-50 border border-green-200 rounded-full">
@@ -111,7 +111,7 @@
                                         @elseif($booking->status === 'pending_payment_verification')
                                             <span class="text-xs text-amber-600 font-semibold italic">Receipt processing...</span>
                                         @elseif($booking->status === 'payment_confirmed' || $booking->status === 'confirmed' || $booking->status === 'approved')
-                                            <span class="text-xs text-green-600 font-bold">Paid successfully 🎉</span>
+                                            <span class="text-xs text-green-600 font-bold">Success!</span>
                                         @else
                                             <span class="text-xs text-gray-400 select-none">-</span>
                                         @endif
@@ -155,8 +155,8 @@
             <div class="bg-blue-50/50 border border-blue-200/60 rounded-2xl p-5 space-y-2 text-xs">
                 <div class="text-xs font-bold text-[#0B318F] uppercase tracking-wide mb-1">🏦 Recipient Account Details:</div>
                 <div class="flex justify-between"><span class="text-gray-500 font-medium">Bank Name:</span> <span class="font-bold text-slate-800">Bank Islam Malaysia Berhad</span></div>
-                <div class="flex justify-between"><span class="text-gray-500 font-medium">Account Name:</span> <span class="font-bold text-slate-800">Bendahari UPSI / UKLK System</span></div>
-                <div class="flex justify-between"><span class="text-gray-500 font-medium">Account Number:</span> <span class="font-mono font-bold text-md text-[#9E007E] select-all bg-white px-1.5 py-0.5 rounded border border-purple-100">08012010045678</span></div>
+                <div class="flex justify-between"><span class="text-gray-500 font-medium">Account Name:</span> <span class="font-bold text-slate-800">Bendahari UKLK</span></div>
+                <div class="flex justify-between"><span class="text-gray-500 font-medium">Account Number:</span> <span class="font-mono font-bold text-md text-[#9E007E] select-all bg-white px-1.5 py-0.5 rounded border border-purple-100">0000000000</span></div>
                 <div class="flex justify-between pt-1 border-t border-blue-200/40"><span class="text-gray-500 font-medium">Payment Reference:</span> <span class="font-mono font-bold text-slate-700">UKLK-<span x-text="payId"></span></span></div>
             </div>
 

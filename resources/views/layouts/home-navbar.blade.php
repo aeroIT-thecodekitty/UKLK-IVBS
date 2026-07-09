@@ -8,8 +8,5 @@
 
     <nav class="flex items-center gap-6 text-md font-medium text-[#0B318F]">
         <a href="#" class="hover:text-purple-800 transition">Home</a>
-        <a href="#" class="hover:text-purple-800 transition">FAQ</a>
-        <a href="#" class="hover:text-purple-800 transition">Staffs</a>
-        <a href="#" class="hover:text-purple-800 transition">Contact Us</a>
     </nav>
 </header>

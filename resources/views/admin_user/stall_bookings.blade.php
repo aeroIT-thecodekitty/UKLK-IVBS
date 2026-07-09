@@ -38,7 +38,7 @@
                                 <th class="p-4">Applicant Detail</th>
                                 <th class="p-4">Reserved Date</th>
                                 <th class="p-4">Status State</th>
-                                <th class="p-4 text-right">Pipeline Management Actions</th>
+                                <th class="p-4 text-right">Actions</th>
                             </tr>
                         </thead>
                         

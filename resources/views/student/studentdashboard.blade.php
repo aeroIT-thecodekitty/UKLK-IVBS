@@ -24,7 +24,7 @@
                     ID: {{ sprintf('%04d', Auth::user()->id) }}
                 </p>
                 <p class="text-sm font-semibold text-slate-700 mt-1">
-                    Role: {{ Auth::user()->role }}
+                    Role: {{ Auth::user()->role === 'student' ? 'UPSI Staff/Student' : Auth::user()->role }}
                 </p>
             </div>
 

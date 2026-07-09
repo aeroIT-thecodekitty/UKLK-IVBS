@@ -18,7 +18,7 @@
             
             <div class="border-b border-gray-200 pb-4">
                 <h2 class="text-2xl font-black text-[#0B318F] tracking-wide">Lounge & Venue Catalogue</h2>
-                <p class="text-xs text-gray-500 mt-1">Browse open campus lounge facilities, check seating capacity thresholds, and review live reservation status updates.</p>
+                <p class="text-xs text-gray-500 mt-1">Browse lounge, venues and more.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
@@ -59,7 +59,7 @@
                                     <div class="flex items-center gap-1"><span>👥</span> Capacity: Max {{ $venue->capacity }} pax</div>
                                 </div>
                                 <p class="text-xs text-gray-600 font-medium leading-relaxed pt-1">
-                                    {{ $venue->description ?? 'No infrastructure specifications logged for this venue module yet.' }}
+                                    {{ $venue->description ?? 'No description logged for this venue yet.' }}
                                 </p>
                             </div>
 
@@ -90,7 +90,7 @@
         <div @click.away="venueModal = false" class="bg-white rounded-[2rem] max-w-md w-full p-8 shadow-2xl border border-gray-100 space-y-4">
             <div>
                 <h3 class="text-xl font-black text-[#0B318F] truncate" x-text="activeVenueName"></h3>
-                <p class="text-xs text-gray-500">Provide reservation parameters to submit your verification request.</p>
+                <p class="text-xs text-gray-500">Provide reservation details to submit your verification request.</p>
             </div>
             <form method="POST" action="{{ route('student.book_venue.store') }}" class="space-y-4 text-sm">
                 @csrf

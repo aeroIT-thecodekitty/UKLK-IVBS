@@ -18,7 +18,7 @@
             
             <div class="border-b border-gray-200 pb-4">
                 <h2 class="text-2xl font-black text-[#0B318F] tracking-wide">Equipment & Items Inventory</h2>
-                <p class="text-xs text-gray-500 mt-1">Browse campus multimedia logistics, tools, and technical equipment available for short-term borrowing.</p>
+                <p class="text-xs text-gray-500 mt-1">Browse campus equipment, tools, and technical equipment available for short-term borrowing.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
@@ -41,7 +41,7 @@
                                     </span>
                                 @else
                                     <span class="px-3 py-1 text-xs font-bold text-red-700 bg-red-50 border border-red-200 rounded-full shadow-sm flex items-center gap-1.5">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Out of Stock
+                                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Unavailable
                                     </span>
                                 @endif
                             </div>

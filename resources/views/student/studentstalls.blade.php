@@ -18,7 +18,7 @@
             
             <div class="border-b border-gray-200 pb-4">
                 <h2 class="text-2xl font-black text-[#0B318F] tracking-wide">Stall & Parking Catalogue</h2>
-                <p class="text-xs text-gray-500 mt-1">Browse active business stalls, physical rental plots, structural roofing configurations, and special student rental pricing options.</p>
+                <p class="text-xs text-gray-500 mt-1">Browse stall parkings, roofed and unroofed.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
@@ -38,7 +38,7 @@
                                 @if($stall->is_roofed)
                                     <span class="px-2.5 py-1 text-[10px] font-bold text-blue-800 bg-blue-100 border border-blue-200 rounded-md uppercase tracking-wide">☂️ Roofed</span>
                                 @else
-                                    <span class="px-2.5 py-1 text-[10px] font-bold text-amber-800 bg-amber-100 border border-amber-200 rounded-md uppercase tracking-wide">☀️ Open Air</span>
+                                    <span class="px-2.5 py-1 text-[10px] font-bold text-amber-800 bg-amber-100 border border-amber-200 rounded-md uppercase tracking-wide">☀️ Unroofed</span>
                                 @endif
                             </div>
 
@@ -66,7 +66,7 @@
                                     <div class="flex items-center gap-1"><span>📦</span> Capacity: {{ $stall->total_slots }} Slots</div>
                                 </div>
                                 <p class="text-xs text-gray-600 font-medium leading-relaxed pt-1">
-                                    {{ $stall->description ?? 'No specific layout specs loaded for this trading unit yet.' }}
+                                    {{ $stall->description ?? 'No description available yet.' }}
                                 </p>
                             </div>
 
@@ -86,7 +86,7 @@
                     </div>
                 @empty
                     <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-slate-100/50 rounded-2xl border border-gray-200 p-12 text-center text-gray-400 font-medium italic">
-                        <div class="text-3xl mb-2">🏪</div> No trading stall indexes tracked yet.
+                        <div class="text-3xl mb-2">🏪</div> No stalls yet, check back soon!
                     </div>
                 @endforelse
             </div>
@@ -116,7 +116,7 @@
                 </div>
                 
                 <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Target Booking Date (Wednesdays Only)</label>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Booking Date (Wednesdays Only)</label>
                     <input type="date" name="booking_date" required 
                            min="{{ date('Y-m-d') }}"
                            @change="

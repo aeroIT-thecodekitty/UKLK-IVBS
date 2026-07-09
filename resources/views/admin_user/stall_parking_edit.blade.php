@@ -36,8 +36,8 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Roof Configuration</label>
                             <select name="is_roofed" class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white text-sm shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                                <option value="0" {{ old('is_roofed', $stall->is_roofed) == 0 ? 'selected' : '' }}>Open Sky</option>
-                                <option value="1" {{ old('is_roofed', $stall->is_roofed) == 1 ? 'selected' : '' }}>Roofed Structural Roof</option>
+                                <option value="0" {{ old('is_roofed', $stall->is_roofed) == 0 ? 'selected' : '' }}>Unroofed</option>
+                                <option value="1" {{ old('is_roofed', $stall->is_roofed) == 1 ? 'selected' : '' }}>Roofed</option>
                             </select>
                         </div>
 

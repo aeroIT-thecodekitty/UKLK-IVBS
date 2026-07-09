@@ -38,7 +38,7 @@
                                 <th class="p-4">Booking Details</th>
                                 <th class="p-4">Date & Time Range</th>
                                 <th class="p-4">Status State</th>
-                                <th class="p-4 text-right">Actions / Verification Logs</th>
+                                <th class="p-4 text-right">Actions</th>
                             </tr>
                         </thead>
                         
@@ -104,7 +104,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="5" class="p-8 text-center text-gray-400 text-sm italic">No active equipment loans right now.</td></tr>
+                                <tr><td colspan="5" class="p-8 text-center text-gray-400 text-sm italic">No active equipment borrowings right now.</td></tr>
                             @endforelse
                         </tbody>
 

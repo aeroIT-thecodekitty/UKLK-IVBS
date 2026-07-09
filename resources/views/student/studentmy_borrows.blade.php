@@ -39,7 +39,7 @@
                                 <th class="p-4">Borrowing Window (Start / End)</th>
                                 <th class="p-4">Return Progress</th>
                                 <th class="p-4">Status</th>
-                                <th class="p-4 text-center">Actions Block</th>
+                                <th class="p-4 text-center">Results</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 text-sm text-gray-700">
@@ -114,7 +114,7 @@
                                         @elseif($statusLower === 'returned')
                                             <span class="text-xs text-green-600 font-bold italic">Awaiting Admin Signoff</span>
                                         @elseif($statusLower === 'pending')
-                                            <span class="text-xs text-gray-400 italic">Locked</span>
+                                            <span class="text-xs text-gray-400 italic">Pending...</span>
                                         @else
                                             <span class="text-xs text-gray-400 font-bold select-none">-</span>
                                         @endif

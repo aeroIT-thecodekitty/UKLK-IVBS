@@ -39,7 +39,7 @@
                                 <th class="p-4">Reserved Date</th>
                                 <th class="p-4">Amount</th>
                                 <th class="p-4">Status State</th>
-                                <th class="p-4 text-right">Workflow Actions</th>
+                                <th class="p-4 text-right">Actions</th>
                             </tr>
                         </thead>
                         
