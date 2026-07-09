@@ -63,6 +63,23 @@
 
             </div>
         </main>
+
+        <footer class="relative z-10 w-full mt-auto bg-slate-900/80 backdrop-blur-md border-t border-white/20 py-6 px-4">
+            <div class="max-w-5xl mx-auto flex flex-col items-center justify-center space-y-2 text-center">
+                <p class="text-sm sm:text-base font-semibold text-white tracking-wide">
+                    This site is developed by 25/26 WBL team 32.
+                </p>
+                <p class="text-xs sm:text-sm text-slate-300">
+                    Developers: <span class="font-medium text-white">Chen Junjie</span> &bull; <span class="font-medium text-white">Joanna Cassandra</span>
+                </p>
+                <div class="w-full max-w-md border-t border-slate-600/50 mt-3 pt-3">
+                    <p class="text-xs text-slate-400">
+                        Copyright &copy; Faculty of Computing and Meta Technology
+                    </p>
+                </div>
+            </div>
+        </footer>
+
     </div>
 
 </body>
