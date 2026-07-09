@@ -27,12 +27,7 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install
 RUN npm run build
-
-# Laravel optimization (IMPORTANT)
-RUN php artisan config:clear \
- && php artisan cache:clear \
- && php artisan view:clear
-
+RUN DB_CONNECTION=sqlite php artisan config:clear && php artisan cache:clear && php artisan view:clear
 # Permissions
 RUN chown -R www-data:www-data /var/www/html \
  && chmod -R 775 storage bootstrap/cache
